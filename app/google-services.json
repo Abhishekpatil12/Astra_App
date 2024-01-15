@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "659053178326",
+    "firebase_url": "https://astra-bcf1a-default-rtdb.firebaseio.com",
+    "project_id": "astra-bcf1a",
+    "storage_bucket": "astra-bcf1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659053178326:android:dd62c6d6be18885bb88877",
+        "android_client_info": {
+          "package_name": "com.example.astraapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNvqNbUjr6SVZquT9b-Yc5cA0T6nLMdTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
