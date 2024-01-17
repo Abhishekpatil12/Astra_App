@@ -2,8 +2,8 @@ package com.example.astraapp;
 
 public class DataClass {
 
-    String name;
-    String imageurl;
+    String name="";
+    String imageurl="";
 
     public DataClass(String name, String imageurl) {
         this.name = name;

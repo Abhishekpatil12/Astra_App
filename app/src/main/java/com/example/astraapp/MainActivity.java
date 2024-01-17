@@ -38,8 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
                 for(DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
-                    System.out.println(dataSnapshot.child("name").getValue());
+                    //dataList.add(dataClass);
+                    String str1 = (String) dataSnapshot.child("name").getValue();
+                    String str2 = (String) dataSnapshot.child("imageurl").getValue();
+                    DataClass dataClass = new DataClass(str1,str2);
+                    dataList.add(dataClass);
+                    System.out.println(str1+" "+str2);
                 }
+
+                myAdapter.notifyDataSetChanged();
 
             }
 
