@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="background_layout">
+        <item name="android:background">#FD7F20</item>
+
+    </style>
+
+    <style name="text_color">
+        <item name="android:textColor">#00478F</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="card_background">
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
+</resources>
