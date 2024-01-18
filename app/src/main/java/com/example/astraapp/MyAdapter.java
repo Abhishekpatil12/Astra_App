@@ -1,12 +1,15 @@
 package com.example.astraapp;
+import static androidx.core.content.ContextCompat.startActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -30,18 +33,18 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return dataList.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        System.out.println("data : "+dataList.get(0).getImageurl());
+        //System.out.println("data : "+dataList.get(0).getImageurl());
 
         if(layoutInflater==null)
         {
@@ -59,6 +62,8 @@ public class MyAdapter extends BaseAdapter {
 
         Glide.with(context).load(dataList.get(i).getImageurl()).into(gridImage);
         gridcaption.setText(dataList.get(i).getName());
+
+
 
         return view;
     }

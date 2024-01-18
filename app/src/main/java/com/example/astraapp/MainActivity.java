@@ -3,7 +3,10 @@ package com.example.astraapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.google.firebase.FirebaseApp;
@@ -37,6 +40,17 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new MyAdapter(this,dataList);
         gridView.setAdapter(myAdapter);
 
+        gridView.setOnItemClickListener((adapterView, view, i, l) -> {
+
+            String str =  dataList.get(i).getName();
+            Intent intent = new Intent(MainActivity.this,AstraInfo.class);
+            intent.putExtra("name",str);
+            startActivity(intent);
+
+        });
+
+
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -51,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     //System.out.println(str1+" "+str2);
                 }
 
-                System.out.println(dataList);
+                //System.out.println(dataList);
                 myAdapter.notifyDataSetChanged();
 
             }
