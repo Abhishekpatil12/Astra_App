@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,12 +20,16 @@ public class MainActivity extends AppCompatActivity {
     GridView gridView;
     ArrayList<DataClass> dataList;
     MyAdapter myAdapter;
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("astras");
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseApp.initializeApp(this);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("astras");
 
         gridView = findViewById(R.id.gridView);
 
@@ -43,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
                     String str2 = (String) dataSnapshot.child("imageurl").getValue();
                     DataClass dataClass = new DataClass(str1,str2);
                     dataList.add(dataClass);
-                    System.out.println(str1+" "+str2);
+                    //System.out.println(str1+" "+str2);
                 }
 
+                System.out.println(dataList);
                 myAdapter.notifyDataSetChanged();
 
             }

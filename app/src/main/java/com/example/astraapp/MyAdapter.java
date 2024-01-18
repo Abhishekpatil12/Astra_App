@@ -1,6 +1,7 @@
 package com.example.astraapp;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,6 +16,7 @@ public class MyAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<DataClass> dataList;
+    LayoutInflater layoutInflater;
 
     public MyAdapter(Context context, ArrayList<DataClass> dataList) {
         this.context = context;
@@ -39,8 +41,21 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        ImageView gridImage = view.findViewById(R.id.gridImage);
+        System.out.println("data : "+dataList.get(0).getImageurl());
+
+        if(layoutInflater==null)
+        {
+            layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        if(view==null)
+        {
+            view = layoutInflater.inflate(R.layout.grid_item,null);
+        }
+
         TextView gridcaption = view.findViewById(R.id.gridCaption);
+        ImageView gridImage = view.findViewById(R.id.gridImage);
+
 
         Glide.with(context).load(dataList.get(i).getImageurl()).into(gridImage);
         gridcaption.setText(dataList.get(i).getName());
