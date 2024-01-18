@@ -4,10 +4,12 @@ public class DataClass {
 
     String name="";
     String imageurl="";
+    String key="";
 
-    public DataClass(String name, String imageurl) {
+    public DataClass(String name, String imageurl, String key) {
         this.name = name;
         this.imageurl = imageurl;
+        this.key = key;
     }
 
     public String getName() {
@@ -26,4 +28,11 @@ public class DataClass {
         this.imageurl = imageurl;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 }

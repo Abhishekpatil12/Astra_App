@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         gridView.setOnItemClickListener((adapterView, view, i, l) -> {
 
-            String str =  dataList.get(i).getName();
+            String str =  dataList.get(i).getKey();
             Intent intent = new Intent(MainActivity.this,AstraInfo.class);
             intent.putExtra("name",str);
             startActivity(intent);
@@ -60,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
                     //dataList.add(dataClass);
                     String str1 = (String) dataSnapshot.child("name").getValue();
                     String str2 = (String) dataSnapshot.child("imageurl").getValue();
-                    DataClass dataClass = new DataClass(str1,str2);
+                    String str3 = dataSnapshot.getKey();
+                    DataClass dataClass = new DataClass(str1,str2,str3);
                     dataList.add(dataClass);
-                    //System.out.println(str1+" "+str2);
+                    //System.out.println("qwer"+dataSnapshot.getKey());
                 }
 
                 //System.out.println(dataList);
