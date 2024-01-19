@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             String str =  dataList.get(i).getKey();
             Intent intent = new Intent(MainActivity.this,AstraInfo.class);
             intent.putExtra("name",str);
+            System.out.println(str);
             startActivity(intent);
 
         });

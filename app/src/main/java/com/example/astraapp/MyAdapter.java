@@ -63,8 +63,6 @@ public class MyAdapter extends BaseAdapter {
         Glide.with(context).load(dataList.get(i).getImageurl()).into(gridImage);
         gridcaption.setText(dataList.get(i).getName());
 
-
-
         return view;
     }
 }

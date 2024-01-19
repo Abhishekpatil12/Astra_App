@@ -7,7 +7,7 @@
     </style>
 
     <style name="text_color">
-        <item name="android:textColor">#00478F</item>
+        <item name="android:textColor">#DE701C</item>
         <item name="android:textStyle">bold</item>
     </style>
 

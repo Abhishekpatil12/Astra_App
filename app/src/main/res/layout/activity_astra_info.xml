@@ -5,23 +5,30 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/background_layout">
+    style="@style/background_layout"
+    android:background="@drawable/om5">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         app:cardCornerRadius="30dp"
+        android:background="@drawable/backcard"
         android:outlineSpotShadowColor="@color/black">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp"
+            android:background="@drawable/backcard2"
+            style="@style/card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                >
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="250dp"
@@ -42,54 +49,63 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
+                        style="@style/text_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Used For: "
-                        android:textSize="15sp"
-                        style="@style/text_color"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="30dp"
-                        android:layout_marginLeft="30dp" />
+                        android:fontFamily="@font/belgrano"
+                        android:text="Used For: "
+                        android:textSize="15sp"/>
 
                     <TextView
+                        android:id="@+id/astra_usedfor"
+                        style="@style/text_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/astra_usedfor"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:fontFamily="@font/belgrano"
                         android:text=""
+                        android:justificationMode="inter_word"
+                        android:textAlignment="gravity"
                         android:textSize="15sp"
-                        style="@style/text_color"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="3dp"/>
+                        android:textStyle="normal" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
+                        style="@style/text_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Counterd By: "
-                        android:textSize="15sp"
-                        style="@style/text_color"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="30dp"
-                        android:layout_marginLeft="30dp" />
+                        android:fontFamily="@font/belgrano"
+                        android:text="Counterd By: "
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/astra_counteredby"
                         android:text=""
+                        android:textStyle="normal"
                         android:textSize="15sp"
                         style="@style/text_color"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="3dp"/>
+                        android:justificationMode="inter_word"
+                        android:fontFamily="@font/belgrano"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"/>
 
                 </LinearLayout>
 
@@ -100,22 +116,25 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        style="@style/text_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Deity: "
-                        android:textSize="15sp"
-                        style="@style/text_color"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="30dp"
-                        android:layout_marginLeft="30dp" />
+                        android:fontFamily="@font/belgrano"
+                        android:text="Deity: "
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/astra_deity"
                         android:text=""
+                        android:textStyle="normal"
                         android:textSize="15sp"
                         style="@style/text_color"
+                        android:fontFamily="@font/belgrano"
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="3dp"/>
 
