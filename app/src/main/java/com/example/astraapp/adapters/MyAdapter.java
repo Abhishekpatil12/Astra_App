@@ -1,17 +1,16 @@
-package com.example.astraapp;
-import static androidx.core.content.ContextCompat.startActivity;
+package com.example.astraapp.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.astraapp.models.DataClass;
+import com.example.astraapp.R;
 
 import java.util.ArrayList;
 
@@ -56,12 +55,11 @@ public class MyAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.grid_item,null);
         }
 
-        TextView gridcaption = view.findViewById(R.id.gridCaption);
+        //done changes
         ImageView gridImage = view.findViewById(R.id.gridImage);
-
-
+        TextView txtname = view.findViewById(R.id.textname);
         Glide.with(context).load(dataList.get(i).getImageurl()).into(gridImage);
-        gridcaption.setText(dataList.get(i).getName());
+        txtname.setText(dataList.get(i).getName());
 
         return view;
     }

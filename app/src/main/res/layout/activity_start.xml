@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity"
+    tools:context=".activities.StartActivity"
     android:background="@drawable/om5">
 
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gridView"
+        android:id="@+id/gridViewmain"
         android:numColumns="2" />
 
     <ProgressBar

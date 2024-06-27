@@ -1,4 +1,4 @@
-package com.example.astraapp;
+package com.example.astraapp.models;
 
 public class DataClass {
 

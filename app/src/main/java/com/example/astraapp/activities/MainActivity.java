@@ -1,4 +1,4 @@
-package com.example.astraapp;
+package com.example.astraapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
+import com.example.astraapp.models.DataClass;
+import com.example.astraapp.adapters.MyAdapter;
+import com.example.astraapp.databinding.ActivityMainBinding;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,54 +21,70 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    GridView gridView;
+    private ActivityMainBinding binding;
     ArrayList<DataClass> dataList;
     MyAdapter myAdapter;
     DatabaseReference databaseReference;
+    String selected;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        binding =ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         FirebaseApp.initializeApp(this);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("astras");
+        getSelected();
+        initfunc();
+        getData();
+        onclickfunc();
 
-        gridView = findViewById(R.id.gridView);
 
-        dataList = new ArrayList<>();
-        myAdapter = new MyAdapter(this,dataList);
-        gridView.setAdapter(myAdapter);
 
-        gridView.setOnItemClickListener((adapterView, view, i, l) -> {
+
+    }
+
+    private void onclickfunc() {
+
+        binding.gridView.setOnItemClickListener((adapterView, view, i, l) -> {
 
             String str =  dataList.get(i).getKey();
-            Intent intent = new Intent(MainActivity.this,AstraInfo.class);
+            Intent intent = new Intent(MainActivity.this, AstraInfo.class);
             intent.putExtra("name",str);
-            System.out.println(str);
             startActivity(intent);
-
         });
+    }
 
+    private void initfunc() {
+        dataList = new ArrayList<>();
+        myAdapter = new MyAdapter(this,dataList);
+        binding.gridView.setAdapter(myAdapter);
+    }
 
+    private void getData() {
+        loading(true);
+        databaseReference = FirebaseDatabase.getInstance().getReference(selected);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                loading(false);
                 for(DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     //dataList.add(dataClass);
+                    if(!dataSnapshot.hasChild("imageurl"))
+                    {
+                        continue;
+                    }
                     String str1 = (String) dataSnapshot.child("name").getValue();
                     String str2 = (String) dataSnapshot.child("imageurl").getValue();
                     String str3 = dataSnapshot.getKey();
                     DataClass dataClass = new DataClass(str1,str2,str3);
                     dataList.add(dataClass);
-                    //System.out.println("qwer"+dataSnapshot.getKey());
                 }
 
-                //System.out.println(dataList);
                 myAdapter.notifyDataSetChanged();
 
             }
@@ -78,6 +95,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
+    private void getSelected() {
+        selected = getIntent().getStringExtra("name");
+    }
+
+    private void loading(Boolean isLoading) {
+        if (isLoading) {
+             binding.progressBar.setVisibility(View.VISIBLE);
+        } else {
+            binding.progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
+
+
 }

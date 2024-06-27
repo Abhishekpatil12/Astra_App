@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.VideoView;
 
+import com.example.astraapp.activities.StartActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -28,9 +30,11 @@ public class SplashScreen extends AppCompatActivity {
         astraVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                startActivity(new Intent(SplashScreen.this, StartActivity.class));
                 finish();
             }
         });
     }
+
+
 }
