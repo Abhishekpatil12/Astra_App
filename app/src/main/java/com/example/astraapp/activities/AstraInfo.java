@@ -4,13 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.astraapp.ImageViewer;
 import com.example.astraapp.R;
+import com.example.astraapp.databinding.ActivityAstraInfoBinding;
+import com.example.astraapp.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -23,28 +28,41 @@ import com.google.firebase.database.ValueEventListener;
 public class AstraInfo extends AppCompatActivity {
 
 
-    ImageView imageView;
-    TextView txtusedfor,txtcounter,txtdeity;
+    private ActivityAstraInfoBinding binding;
+    String name;
     DatabaseReference databaseReference;
-    Context context;
+    String imageurl;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_astra_info);
-
+        binding = ActivityAstraInfoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         FirebaseApp.initializeApp(this);
+        getSelected();
+        getData();
+        onClickfunc();
 
-        String name = getIntent().getStringExtra("name");
-        //System.out.println("abc "+name);
+    }
 
-        imageView = findViewById(R.id.astra_image);
-        txtusedfor = findViewById(R.id.astra_usedfor);
-        txtcounter = findViewById(R.id.astra_counteredby);
-        txtdeity = findViewById(R.id.astra_deity);
-        context = this;
+    private void onClickfunc() {
 
+        binding.astraImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AstraInfo.this, ImageViewer.class);
+                intent.putExtra("imageurl",imageurl);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getSelected() {
+        name = getIntent().getStringExtra("name");
+    }
+
+    private void getData() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("astras").child(name);
 
@@ -54,17 +72,14 @@ public class AstraInfo extends AppCompatActivity {
                 Log.e("firebase", "Error getting data", task.getException());
             }
             else {
-                //Log.d("firebase", String.valueOf(task.getResult().getValue()));
+
                 DataSnapshot dataSnapshot = task.getResult();
 
-                String imageurl = (String) dataSnapshot.child("imageurl").getValue();
-                System.out.println(imageurl);
-
-                Glide.with(context).load(imageurl).into(imageView);
-
-                txtusedfor.setText((CharSequence) dataSnapshot.child("used_for").getValue());
-                txtcounter.setText((CharSequence) dataSnapshot.child("counter_by").getValue());
-                txtdeity.setText((CharSequence) dataSnapshot.child("deity").getValue());
+                imageurl = (String) dataSnapshot.child("imageurl").getValue();
+                Glide.with(this).load(imageurl).into(binding.astraImage);
+                binding.astraUsedfor.setText((CharSequence) dataSnapshot.child("used_for").getValue());
+                binding.astraCounteredby.setText((CharSequence) dataSnapshot.child("counter_by").getValue());
+                binding.astraDeity.setText((CharSequence) dataSnapshot.child("deity").getValue());
             }
         });
 

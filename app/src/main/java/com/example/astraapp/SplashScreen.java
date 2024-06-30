@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.VideoView;
 
+import com.example.astraapp.activities.MainActivity;
 import com.example.astraapp.activities.StartActivity;
 
 public class SplashScreen extends AppCompatActivity {

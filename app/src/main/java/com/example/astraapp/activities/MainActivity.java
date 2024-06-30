@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     DatabaseReference databaseReference;
     String selected;
+    Intent intent;
 
 
     @Override
@@ -41,16 +42,27 @@ public class MainActivity extends AppCompatActivity {
         onclickfunc();
 
 
-
-
     }
 
     private void onclickfunc() {
 
         binding.gridView.setOnItemClickListener((adapterView, view, i, l) -> {
 
+
+            if(selected.equals("arrow_heads"))
+            {
+                intent = new Intent(MainActivity.this, ArrowHeadInfo.class);
+            }
+            else if(selected.equals("astras"))
+            {
+                intent = new Intent(MainActivity.this, AstraInfo.class);
+            }
+            else if(selected.equals("vyuham"))
+            {
+                intent = new Intent(MainActivity.this, VyuhamInfo.class);
+            }
+
             String str =  dataList.get(i).getKey();
-            Intent intent = new Intent(MainActivity.this, AstraInfo.class);
             intent.putExtra("name",str);
             startActivity(intent);
         });
