@@ -17,15 +17,12 @@
         android:background="@drawable/backcard"
         android:outlineSpotShadowColor="@color/black">
 
-
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="20dp"
             android:background="@drawable/backcard2"
             style="@style/card_background">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,10 +60,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-
                     <TextView
                         android:id="@+id/txtname"
                         style="@style/text_color"
+                        android:fontFamily="@font/belgrano"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -103,7 +100,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         style="@style/text_color"
@@ -111,9 +108,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="30dp"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginBottom="15dp"
                         android:fontFamily="@font/belgrano"
-                        android:text="Sanskrit Name : "
+                        android:text="Sanskrit Name: "
                         android:textSize="15sp" />
 
                     <TextView
@@ -126,24 +123,24 @@
                         style="@style/text_color"
                         android:justificationMode="inter_word"
                         android:fontFamily="@font/belgrano"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"/>
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="15dp"/>
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/text_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
                         android:fontFamily="@font/belgrano"
                         android:text="When to Use : "
                         android:textSize="15sp" />
@@ -157,14 +154,11 @@
                         android:textSize="15sp"
                         style="@style/text_color"
                         android:fontFamily="@font/belgrano"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="3dp"/>
+                        android:layout_marginLeft="30dp"/>
 
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
-
 
     </androidx.cardview.widget.CardView>
 
