@@ -39,12 +39,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     String selected;
     Intent intent;
-
-    TextView sectioninfo;
     LinearLayout layout1;
-
-    LinearLayout info_card;
-    ImageButton btnExpand;
     private boolean isClicked;
 
     @Override
@@ -59,30 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         layout1.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
-        btnExpand = binding.btnExpand;
 
-        info_card = binding.infoCard;
-
-        btnExpand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(!isClicked)
-                {
-                    isClicked = true;
-                    btnExpand.setImageDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up_24));
-                }
-                else
-                {
-                    isClicked = false;
-                    btnExpand.setImageDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down_24));
-                }
-
-                int v = (binding.sectiontext.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
-                TransitionManager.beginDelayedTransition(layout1,new AutoTransition());
-                binding.sectiontext.setVisibility(v);
-            }
-        });
 
         getSelected();
         initfunc();
@@ -114,6 +86,15 @@ public class MainActivity extends AppCompatActivity {
             String str =  dataList.get(i).getKey();
             intent.putExtra("name",str);
             startActivity(intent);
+        });
+
+        binding.btnExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                expand(view);
+
+            }
         });
     }
 
@@ -148,17 +129,17 @@ public class MainActivity extends AppCompatActivity {
 
                     if(selected.equals("arrow_heads"))
                     {
-                        info_card.setVisibility(View.GONE);
+                        binding.infoCard.setVisibility(View.GONE);
                     }
                     else if(selected.equals("astras"))
                     {
-                        info_card.setVisibility(View.VISIBLE);
+                        binding.infoCard.setVisibility(View.VISIBLE);
                         binding.sectioninfo.setText("What is a Astra? Click to know");
                         binding.sectiontext.setText("Astra in ancient Indian history refers to a supernatural weapon associated with a specific deity, possessing unique powers.Their use required knowledge of mantras, concentration, and divine blessings, making them potent tools in epic battles. The Astras lack a definitive form and shape. They can be invoked in any material thing using mantras, even in piece of a grass.");
                     }
                     else if(selected.equals("vyuham"))
                     {
-                        info_card.setVisibility(View.VISIBLE);
+                        binding.infoCard.setVisibility(View.VISIBLE);
                         binding.sectioninfo.setText("What is a Vyuham? Click to know");
                         binding.sectiontext.setText("Vyuham in ancient Indian history refers to a strategic military formation used in battles. These formations were meticulously planned and executed to gain tactical advantages over the enemy. Vyuhams required precise coordination and discipline among the warriors, with each position playing a specific role in the overall strategy. They showcased advanced military tactics and the importance of planning in ancient warfare.");
                     }
@@ -193,12 +174,12 @@ public class MainActivity extends AppCompatActivity {
         if(!isClicked)
         {
             isClicked = true;
-            btnExpand.setImageDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up_24));
+            binding.btnExpand.setImageDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up_24));
         }
         else
         {
             isClicked = false;
-            btnExpand.setImageDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down_24));
+            binding.btnExpand.setImageDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down_24));
         }
 
         int v = (binding.sectiontext.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
