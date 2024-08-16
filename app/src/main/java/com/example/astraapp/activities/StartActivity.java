@@ -10,14 +10,23 @@ import android.view.View;
 import com.example.astraapp.models.DataClass;
 import com.example.astraapp.adapters.MyAdapter;
 import com.example.astraapp.databinding.ActivityStartBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -26,6 +35,8 @@ public class StartActivity extends AppCompatActivity {
     ArrayList<DataClass> startList;
     DatabaseReference databaseReference;
     MyAdapter myAdapter;
+    FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +44,9 @@ public class StartActivity extends AppCompatActivity {
         binding = ActivityStartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         FirebaseApp.initializeApp(this);
+
+        db = FirebaseFirestore.getInstance();
+
 
         initfunc();
         getData();
@@ -62,6 +76,28 @@ public class StartActivity extends AppCompatActivity {
     private void getData() {
 
         loading(true);
+
+//        db.collection("info").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//
+//                if(task.isSuccessful()){
+//                    loading(false);
+//                    for(QueryDocumentSnapshot documentSnapshot:task.getResult()){
+//                        Map<String, Object> mp = documentSnapshot.getData();
+//                        //System.out.println("DATA : "+mp.get("imageurl"));
+//                        String str1 = (String) mp.get("name");
+//                        String str2 = (String) mp.get("imageurl");
+//                        String str3 = (String) mp.get("id");
+//                        DataClass startClass = new DataClass(str1,str2,str3);
+//                        startList.add(startClass);
+//
+//                    }
+//
+//                    myAdapter.notifyDataSetChanged();
+//                }
+//            }
+//        });
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -88,6 +124,8 @@ public class StartActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     private void loading(Boolean isLoading) {
