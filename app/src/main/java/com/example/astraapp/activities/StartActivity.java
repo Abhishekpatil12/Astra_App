@@ -2,17 +2,26 @@ package com.example.astraapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.astraapp.ContactUs;
+import com.example.astraapp.MainStart;
+import com.example.astraapp.MissionAndVision;
+import com.example.astraapp.R;
 import com.example.astraapp.models.DataClass;
 import com.example.astraapp.adapters.MyAdapter;
 import com.example.astraapp.databinding.ActivityStartBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +40,9 @@ import java.util.Map;
 public class StartActivity extends AppCompatActivity {
 
     private ActivityStartBinding binding;
+    DrawerLayout drawerLayout;
+    ImageButton buttonDrawerToggle;
+    NavigationView navigationView;
 
     ArrayList<DataClass> startList;
     DatabaseReference databaseReference;
@@ -46,12 +58,40 @@ public class StartActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         db = FirebaseFirestore.getInstance();
+        drawerLayout = findViewById(R.id.drawerLayout);
+        buttonDrawerToggle = findViewById(R.id.buttondrawertoggle);
+        navigationView = findViewById(R.id.navigationView);
 
 
+        navigation();
         initfunc();
         getData();
         onclickfunc();
 
+    }
+
+    private void navigation() {
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int itemId = item.getItemId();
+
+                if(itemId==R.id.navMenu){
+                    Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
+                    startActivity(intent);
+                    Toast.makeText(StartActivity.this, "Menu Clicked", Toast.LENGTH_SHORT).show();
+                }
+
+                if(itemId==R.id.navDonate){
+                    Intent intent = new Intent(StartActivity.this, ContactUs.class);
+                    startActivity(intent);
+                    Toast.makeText(StartActivity.this, "Donate Clicked", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
     }
 
     private void onclickfunc() {
@@ -63,6 +103,15 @@ public class StartActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
+
+        buttonDrawerToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.open();
+            }
+        });
+
+
     }
 
     private void initfunc() {

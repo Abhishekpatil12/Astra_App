@@ -43,6 +43,17 @@ public class DisplayInfo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        binding.infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(DisplayInfo.this, ImageViewer.class);
+                intent.putExtra("imageurl","https://firebasestorage.googleapis.com/v0/b/astra-bcf1a.appspot.com/o/Vyuham%2FSymbol-2-info.png?alt=media&token=d62a4b34-ed22-4e02-af58-594db3d0ae72");
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void getData() {
@@ -174,6 +185,7 @@ public class DisplayInfo extends AppCompatActivity {
                     binding.displaySecond.setText((CharSequence) dataSnapshot.child("sanskrit_name").getValue());
                     binding.displayThird.setText((CharSequence) dataSnapshot.child("when_to_use_it").getValue());
                     binding.displayFourth.setText((CharSequence) dataSnapshot.child("position_of_the_army").getValue());
+                    binding.infoButton.setVisibility(View.VISIBLE);
 
                 }
             }

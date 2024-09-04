@@ -38,6 +38,7 @@
                     android:layout_gravity="end"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Info button"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_info"/>
 
                 <androidx.cardview.widget.CardView

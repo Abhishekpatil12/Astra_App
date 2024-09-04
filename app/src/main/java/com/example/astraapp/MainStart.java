@@ -25,7 +25,7 @@ public class MainStart extends AppCompatActivity {
         setContentView(R.layout.activity_main_start);
 
         drawerLayout = findViewById(R.id.drawerLayout);
-        buttonDrawerToggle = findViewById(R.id.buttondrawertoggle);
+        //buttonDrawerToggle = findViewById(R.id.buttondrawertoggle);
         navigationView = findViewById(R.id.navigationView);
 
         buttonDrawerToggle.setOnClickListener(new View.OnClickListener() {
