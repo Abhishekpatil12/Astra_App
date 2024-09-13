@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
             intent = new Intent(MainActivity.this, DisplayInfo.class);
 
-            String str =  dataList.get(i).getKey();
+            String str=  dataList.get(i).getKey();
             intent.putExtra("selected",selected);
             intent.putExtra("name",str);
             startActivity(intent);
@@ -122,22 +122,77 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new MyAdapter(this,dataList);
         binding.gridView.setAdapter(myAdapter);
 
-        if(selected.equals("arrow_heads"))
-        {
-            binding.infoCard.setVisibility(View.GONE);
-        }
-        else if(selected.equals("astras"))
-        {
-            binding.infoCard.setVisibility(View.VISIBLE);
-            binding.sectioninfo.setText("What is a Astra? Click to know");
-            binding.sectiontext.setText("Astra in ancient Indian history refers to a supernatural weapon associated with a specific deity, possessing unique powers.Their use required knowledge of mantras, concentration, and divine blessings, making them potent tools in epic battles. The Astras lack a definitive form and shape. They can be invoked in any material thing using mantras, even in piece of a grass.");
-        }
-        else if(selected.equals("vyuham"))
-        {
-            binding.infoCard.setVisibility(View.VISIBLE);
-            binding.sectioninfo.setText("What is a Vyuham? Click to know");
-            binding.sectiontext.setText("Vyuham in ancient Indian history refers to a strategic military formation used in battles. These formations were meticulously planned and executed to gain tactical advantages over the enemy. Vyuhams required precise coordination and discipline among the warriors, with each position playing a specific role in the overall strategy. They showcased advanced military tactics and the importance of planning in ancient warfare.");
-        }
+        databaseReference = FirebaseDatabase.getInstance().getReference().child(selected);
+
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String sanskritNamename = (String) snapshot.child("sanskrit_name").getValue();
+                String intro = (String) snapshot.child("intro").getValue();
+                String name = (String) snapshot.child("name").getValue();
+
+                if(selected.equals("arrow_heads"))
+                {
+                    binding.infoCard.setVisibility(View.GONE);
+                }
+                else if(selected.equals("astras"))
+                {
+                    binding.infoCard.setVisibility(View.VISIBLE);
+                    binding.sectioninfo.setText("What is "+ name +" Click to know");
+                    binding.sectionheading.setText(sanskritNamename);
+                    binding.sectiontext.setText(intro);
+                }
+                else if(selected.equals("vyuham"))
+                {
+                    binding.infoCard.setVisibility(View.VISIBLE);
+                    binding.sectioninfo.setText("What is "+ name +" Click to know");
+                    binding.sectionheading.setText(sanskritNamename);
+                    binding.sectiontext.setText(intro);
+                }
+                else if(selected.equals("gunmushti"))
+                {
+                    binding.infoCard.setVisibility(View.VISIBLE);
+                    binding.sectioninfo.setText("What is "+ name +" Click to know");
+                    binding.sectionheading.setText(sanskritNamename);
+                    binding.sectiontext.setText(intro);
+                }
+                else if(selected.equals("dhanurmushti"))
+                {
+                    binding.infoCard.setVisibility(View.VISIBLE);
+                    binding.sectioninfo.setText("What is "+ name +" Click to know");
+                    binding.sectionheading.setText(sanskritNamename);
+                    binding.sectiontext.setText(intro);
+                }
+                else if(selected.equals("lakshya"))
+                {
+                    binding.infoCard.setVisibility(View.VISIBLE);
+                    binding.sectioninfo.setText("What is "+ name +" Click to know");
+                    binding.sectionheading.setText(sanskritNamename);
+                    binding.sectiontext.setText(intro);
+                }
+                else if(selected.equals("modes_of_shooting_arrow"))
+                {
+                    binding.infoCard.setVisibility(View.VISIBLE);
+                    binding.sectioninfo.setText("What is "+ name +" Click to know");
+                    binding.sectionheading.setText(sanskritNamename);
+                    binding.sectiontext.setText(intro);
+                }
+                else if(selected.equals("naracha_nalika_sataghani"))
+                {
+                    binding.infoCard.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
     }
 
     private void getData() {
@@ -259,7 +314,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         int v = (binding.sectiontext.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+        int v1 = (binding.sectionheading.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
         TransitionManager.beginDelayedTransition(layout1,new AutoTransition());
         binding.sectiontext.setVisibility(v);
+        binding.sectionheading.setVisibility(v1);
     }
 }

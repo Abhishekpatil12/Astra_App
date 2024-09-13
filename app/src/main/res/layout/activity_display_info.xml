@@ -195,6 +195,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
+                        android:id="@+id/astraWarning"
+                        android:visibility="gone"
                         android:background="@color/white">
 
                         <ImageView
@@ -218,7 +220,51 @@
                     </LinearLayout>
 
 
+
+
                 </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/gunushtiLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="20px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/belgrano"
+                        style="@style/text_color"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:layout_marginBottom="20px"
+                        android:text="Practical use of Gunmushti Techniques"
+                        android:justificationMode="inter_word"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/belgrano"
+                        style="@style/text_color"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:layout_marginBottom="20px"
+                        android:text="@string/gunmushti"
+                        android:textStyle="normal"
+                        android:justificationMode="inter_word"/>
+
+                    <ImageButton
+                        android:id="@+id/gunmushti_video"
+                        android:layout_width="308dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/draw_techniques" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

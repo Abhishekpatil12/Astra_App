@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.astraapp.ContactUs;
+import com.example.astraapp.Feedback;
 import com.example.astraapp.MainStart;
 import com.example.astraapp.MissionAndVision;
 import com.example.astraapp.R;
@@ -46,6 +47,7 @@ public class StartActivity extends AppCompatActivity {
 
     ArrayList<DataClass> startList;
     DatabaseReference databaseReference;
+    String id;
     MyAdapter myAdapter;
     FirebaseFirestore db;
 
@@ -78,16 +80,34 @@ public class StartActivity extends AppCompatActivity {
 
                 int itemId = item.getItemId();
 
-                if(itemId==R.id.navMenu){
+                if(itemId==R.id.navMission){
                     Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
+                    startActivity(intent);
+                    Toast.makeText(StartActivity.this, "About Us Clicked", Toast.LENGTH_SHORT).show();
+                }
+
+                if(itemId==R.id.navMenu){
+                    Intent intent = new Intent(StartActivity.this, StartActivity.class);
                     startActivity(intent);
                     Toast.makeText(StartActivity.this, "Menu Clicked", Toast.LENGTH_SHORT).show();
                 }
 
                 if(itemId==R.id.navDonate){
+                    Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
+                    startActivity(intent);
+                    Toast.makeText(StartActivity.this, "About Us Clicked", Toast.LENGTH_SHORT).show();
+                }
+
+                if(itemId==R.id.navFeedback){
+                    Intent intent = new Intent(StartActivity.this, Feedback.class);
+                    startActivity(intent);
+                    Toast.makeText(StartActivity.this, "Feedback Clicked", Toast.LENGTH_SHORT).show();
+                }
+
+                if(itemId==R.id.navContact){
                     Intent intent = new Intent(StartActivity.this, ContactUs.class);
                     startActivity(intent);
-                    Toast.makeText(StartActivity.this, "Donate Clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StartActivity.this, "Contact Us Clicked", Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -100,8 +120,8 @@ public class StartActivity extends AppCompatActivity {
             String str =  startList.get(i).getKey();
             Intent intent = new Intent(StartActivity.this, MainActivity.class);
             intent.putExtra("name",str);
+            intent.putExtra("id",id);
             startActivity(intent);
-
         });
 
         buttonDrawerToggle.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +177,7 @@ public class StartActivity extends AppCompatActivity {
                 {
 
                     String str1 = (String) dataSnapshot.child("name").getValue();
+                    id = (String) dataSnapshot.child("id").getValue();
                     String str2 = (String) dataSnapshot.child("imageurl").getValue();
                     String str3 = dataSnapshot.getKey();
                     DataClass startClass = new DataClass(str1,str2,str3);
@@ -184,6 +205,5 @@ public class StartActivity extends AppCompatActivity {
             binding.progressBar.setVisibility(View.INVISIBLE);
         }
     }
-
 
 }

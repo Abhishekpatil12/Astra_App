@@ -3,10 +3,13 @@ package com.example.astraapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.bumptech.glide.Glide;
 import com.example.astraapp.databinding.ActivityDisplayInfoBinding;
@@ -86,6 +89,7 @@ public class DisplayInfo extends AppCompatActivity {
                     binding.displaySecond.setText((CharSequence) dataSnapshot.child("sanskrit_name").getValue());
                     binding.displayThird.setText((CharSequence) dataSnapshot.child("shape").getValue());
 
+
                 }
                 else if(selected.equals("astras")){
 
@@ -97,6 +101,7 @@ public class DisplayInfo extends AppCompatActivity {
                     binding.displaySecond.setText((CharSequence) dataSnapshot.child("used_for").getValue());
                     binding.displayThird.setText((CharSequence) dataSnapshot.child("counter_by").getValue());
                     binding.displayFourth.setText((CharSequence) dataSnapshot.child("deity").getValue());
+                    binding.astraWarning.setVisibility(View.VISIBLE);
 
                 }
                 else if(selected.equals("dhanurmushti")){
@@ -113,9 +118,22 @@ public class DisplayInfo extends AppCompatActivity {
                     binding.displayFirst.setText((CharSequence) dataSnapshot.child("name").getValue());
                     binding.displaySecond.setText((CharSequence) dataSnapshot.child("used_for").getValue());
                     binding.displayThird.setText((CharSequence) dataSnapshot.child("position").getValue());
+                    binding.astraWarning.setVisibility(View.GONE);
 
                 }
                 else if(selected.equals("gunmushti")){
+
+                    binding.gunushtiLayout.setVisibility(View.VISIBLE);
+
+                    ImageButton imageButton = binding.gunmushtiVideo;
+                    imageButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String url = "https://www.youtube.com/watch?v=01HbsPWvFM0";
+                            Intent urlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                            startActivity(urlIntent);
+                        }
+                    });
 
                     binding.first.setText("Name : ");
                     binding.second.setText("Sanskrit Name : ");
@@ -129,6 +147,8 @@ public class DisplayInfo extends AppCompatActivity {
                 }
                 else if(selected.equals("lakshya")){
 
+
+
                     binding.first.setText("Name : ");
                     binding.second.setText("Sanskrit Name : ");
                     binding.third.setText("Aimming :");
@@ -137,6 +157,8 @@ public class DisplayInfo extends AppCompatActivity {
                     if (parent != null) {
                         parent.removeView(binding.fourth);
                     }
+
+
 
                     binding.displayFirst.setText((CharSequence) dataSnapshot.child("name").getValue());
                     binding.displaySecond.setText((CharSequence) dataSnapshot.child("sanskrit_name").getValue());

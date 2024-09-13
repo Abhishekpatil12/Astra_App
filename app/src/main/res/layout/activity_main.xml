@@ -20,11 +20,14 @@
         android:orientation="vertical"
         >
 
+
         <LinearLayout
             android:id="@+id/info_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+
 
             <androidx.cardview.widget.CardView
                 android:onClick="expand"
@@ -65,7 +68,7 @@
                                 android:src="@drawable/ic_info" />
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="650px"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="8dp"
@@ -74,10 +77,36 @@
                                 android:text="What are astras? click to know"
                                 android:textColor="@color/black" />
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/btnExpand"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_gravity="end"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:src="@drawable/baseline_keyboard_arrow_down_24"/>
+                            </LinearLayout>
+
 
 
 
                         </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/sectionheading"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:visibility="gone"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="15dp">
+                        </TextView>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -95,13 +124,7 @@
 
                 </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/btnExpand"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="end"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/baseline_keyboard_arrow_down_24"/>
+
 
 
 

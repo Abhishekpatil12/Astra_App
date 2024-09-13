@@ -41,16 +41,16 @@ public class MainStart extends AppCompatActivity {
 
                 int itemId = item.getItemId();
 
-                if(itemId==R.id.navMenu){
-                    Intent intent = new Intent(MainStart.this,MissionAndVision.class);
-                    startActivity(intent);
-                    Toast.makeText(MainStart.this, "Menu Clicked", Toast.LENGTH_SHORT).show();
-                }
-
-                if(itemId==R.id.navDonate){
+                if(itemId==R.id.navContact){
                     Intent intent = new Intent(MainStart.this,ContactUs.class);
                     startActivity(intent);
                     Toast.makeText(MainStart.this, "Donate Clicked", Toast.LENGTH_SHORT).show();
+                }
+
+                if(itemId==R.id.navMission){
+                    Intent intent = new Intent(MainStart.this,MissionAndVision.class);
+                    startActivity(intent);
+                    Toast.makeText(MainStart.this, "Menu Clicked", Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
