@@ -1,4 +1,4 @@
-package com.example.astraapp;
+package com.example.astraapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.bumptech.glide.Glide;
+import com.example.astraapp.ImageViewer;
+import com.example.astraapp.R;
 import com.example.astraapp.databinding.ActivityDisplayInfoBinding;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ public class DisplayInfo extends AppCompatActivity {
     private ActivityDisplayInfoBinding binding;
     DatabaseReference databaseReference;
     String name,selected,imageurl;
+    ImageButton btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class DisplayInfo extends AppCompatActivity {
         binding = ActivityDisplayInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         FirebaseApp.initializeApp(this);
+        btn =  findViewById(R.id.buttonback);
         getSelected();
         onClickfunc();
         getData();
@@ -55,6 +58,13 @@ public class DisplayInfo extends AppCompatActivity {
                 intent.putExtra("imageurl","https://firebasestorage.googleapis.com/v0/b/astra-bcf1a.appspot.com/o/Vyuham%2FSymbol-2-info.png?alt=media&token=d62a4b34-ed22-4e02-af58-594db3d0ae72");
                 startActivity(intent);
 
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }

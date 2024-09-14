@@ -7,7 +7,12 @@
     android:layout_height="match_parent"
     style="@style/background_layout"
     android:background="@drawable/om5"
-    tools:context=".ContactUs">
+    tools:context=".activities.ContactUs">
+
+    <include
+        layout="@layout/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -16,6 +21,8 @@
         app:cardCornerRadius="30dp"
         android:background="@drawable/backcard"
         android:outlineSpotShadowColor="@color/black">
+
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -30,6 +37,8 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="10dp"
                 >
+
+
 
                 <TextView
                     style="@style/text_color"

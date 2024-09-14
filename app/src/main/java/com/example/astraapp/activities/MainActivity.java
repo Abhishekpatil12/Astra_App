@@ -1,45 +1,30 @@
 package com.example.astraapp.activities;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.LayoutTransition;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.AutoTransition;
-import android.transition.ChangeTransform;
 import android.transition.TransitionManager;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.example.astraapp.DisplayInfo;
 import com.example.astraapp.R;
+import com.example.astraapp.databinding.ActivityMainBinding;
 import com.example.astraapp.models.DataClass;
 import com.example.astraapp.adapters.MyAdapter;
-import com.example.astraapp.databinding.ActivityMainBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout layout1;
     private boolean isClicked;
     FirebaseFirestore db;
+    ImageButton btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         binding =ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         layout1 = binding.sectioninfolayout;
+        btn =  findViewById(R.id.buttonback);
 
         FirebaseApp.initializeApp(this);
 
@@ -84,20 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding.gridView.setOnItemClickListener((adapterView, view, i, l) -> {
 
-
-//            if(selected.equals("arrow_heads"))
-//            {
-//                intent = new Intent(MainActivity.this, ArrowHeadInfo.class);
-//            }
-//            else if(selected.equals("astras"))
-//            {
-//                intent = new Intent(MainActivity.this, AstraInfo.class);
-//            }
-//            else if(selected.equals("vyuham"))
-//            {
-//                intent = new Intent(MainActivity.this, VyuhamInfo.class);
-//            }
-
             intent = new Intent(MainActivity.this, DisplayInfo.class);
 
             String str=  dataList.get(i).getKey();
@@ -114,6 +87,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
     }
 
     private void initfunc() {

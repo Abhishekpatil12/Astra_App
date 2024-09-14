@@ -6,7 +6,12 @@
     android:layout_height="wrap_content"
     style="@style/background_layout"
     android:background="@drawable/om5"
-    tools:context=".Feedback">
+    tools:context=".activities.Feedback">
+
+    <include
+        layout="@layout/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -91,28 +96,30 @@
                     android:layout_marginBottom="30px"
                     android:orientation="vertical">
 
+
                     <EditText
+                        android:id="@+id/gmail"
                         android:layout_width="match_parent"
-                        android:contentDescription="YOUR NAME"
                         android:layout_margin="30px"
+                        android:contentDescription="YOUR EMAIL"
                         android:layout_height="wrap_content"/>
 
                     <EditText
+                        android:id="@+id/feedback_edit_text"
                         android:layout_width="match_parent"
-                        android:layout_margin="30px"
-                        android:contentDescription="YOUR NAME"
-                        android:layout_height="wrap_content"/>
-
-                    <EditText
-                        android:id="@+id/editTextText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:layout_margin="30px"
-                        android:inputType="text"
-                        android:text="Name" />
+                        android:layout_height="200dp"
+                        android:background="@drawable/feedback_background"
+                        android:hint="Enter your feedback here..."
+                        android:padding="16dp"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:minLines="5"
+                        android:maxLines="10"
+                        android:layout_margin="20dp"
+                        android:scrollbars="vertical" />
 
                     <Button
+                        android:id="@+id/submitbtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

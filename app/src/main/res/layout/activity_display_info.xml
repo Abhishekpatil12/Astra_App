@@ -7,7 +7,12 @@
     android:layout_height="match_parent"
     style="@style/background_layout"
     android:background="@drawable/om5"
-    tools:context=".DisplayInfo">
+    tools:context=".activities.DisplayInfo">
+
+    <include
+        layout="@layout/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

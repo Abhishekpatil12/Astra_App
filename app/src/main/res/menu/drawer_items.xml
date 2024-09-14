@@ -3,22 +3,29 @@
 
 
     <item
-        android:id="@+id/navMenu"
-        android:title="Menu"/>
+        android:id="@+id/navHome"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
 
     <item
-        android:id="@+id/navMission"
-        android:title="About Us"/>
-
-    <item
-        android:id="@+id/navDonate"
-        android:title="Donate"/>
+        android:id="@+id/navAbout"
+        android:title="About Us"
+        android:icon="@drawable/ic_info"/>
 
     <item
         android:id="@+id/navContact"
-        android:title="Contact Us"/>
+        android:title="Contact Us"
+        android:icon="@drawable/ic_email"/>
 
     <item
         android:id="@+id/navFeedback"
-        android:title="Feedback"/>
+        android:title="Feedback"
+        android:icon="@drawable/ic_feedback"/>
+
+    <item
+        android:id="@+id/navDonate"
+        android:title="Donate"
+        android:icon="@drawable/ic_money"/>
+
+
 </menu>

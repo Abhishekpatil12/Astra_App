@@ -2,6 +2,7 @@ package com.example.astraapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -11,17 +12,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.astraapp.ContactUs;
-import com.example.astraapp.Feedback;
-import com.example.astraapp.MainStart;
-import com.example.astraapp.MissionAndVision;
 import com.example.astraapp.R;
 import com.example.astraapp.models.DataClass;
 import com.example.astraapp.adapters.MyAdapter;
 import com.example.astraapp.databinding.ActivityStartBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -29,14 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -64,7 +53,6 @@ public class StartActivity extends AppCompatActivity {
         buttonDrawerToggle = findViewById(R.id.buttondrawertoggle);
         navigationView = findViewById(R.id.navigationView);
 
-
         navigation();
         initfunc();
         getData();
@@ -80,35 +68,34 @@ public class StartActivity extends AppCompatActivity {
 
                 int itemId = item.getItemId();
 
-                if(itemId==R.id.navMission){
+                if(itemId==R.id.navHome){
+                    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        // Close the drawer
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                    }
+                }
+
+                if(itemId==R.id.navAbout){
                     Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
                     startActivity(intent);
-                    Toast.makeText(StartActivity.this, "About Us Clicked", Toast.LENGTH_SHORT).show();
-                }
-
-                if(itemId==R.id.navMenu){
-                    Intent intent = new Intent(StartActivity.this, StartActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(StartActivity.this, "Menu Clicked", Toast.LENGTH_SHORT).show();
-                }
-
-                if(itemId==R.id.navDonate){
-                    Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
-                    startActivity(intent);
-                    Toast.makeText(StartActivity.this, "About Us Clicked", Toast.LENGTH_SHORT).show();
-                }
-
-                if(itemId==R.id.navFeedback){
-                    Intent intent = new Intent(StartActivity.this, Feedback.class);
-                    startActivity(intent);
-                    Toast.makeText(StartActivity.this, "Feedback Clicked", Toast.LENGTH_SHORT).show();
                 }
 
                 if(itemId==R.id.navContact){
                     Intent intent = new Intent(StartActivity.this, ContactUs.class);
                     startActivity(intent);
-                    Toast.makeText(StartActivity.this, "Contact Us Clicked", Toast.LENGTH_SHORT).show();
                 }
+
+                if(itemId==R.id.navFeedback){
+                    Intent intent = new Intent(StartActivity.this, Feedback.class);
+                    startActivity(intent);
+                }
+
+                if(itemId==R.id.navDonate){
+//                    Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
+//                    startActivity(intent);
+                    Toast.makeText(StartActivity.this, "Donate Clicked", Toast.LENGTH_SHORT).show();
+                }
+
                 return false;
             }
         });
