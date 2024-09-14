@@ -90,6 +90,7 @@ public class Feedback extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
+        dialog.setCancelable(false);
         dialog.show();
 
         Button okButton = dialogView.findViewById(R.id.btn_ok);
@@ -115,6 +116,7 @@ public class Feedback extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
+        dialog.setCancelable(false);
         dialog.show();
 
 

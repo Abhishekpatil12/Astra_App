@@ -127,7 +127,7 @@ public class DisplayInfo extends AppCompatActivity {
 
                     binding.displayFirst.setText((CharSequence) dataSnapshot.child("name").getValue());
                     binding.displaySecond.setText((CharSequence) dataSnapshot.child("used_for").getValue());
-                    binding.displayThird.setText((CharSequence) dataSnapshot.child("position").getValue());
+                    binding.displayThird.setText((CharSequence) dataSnapshot.child("position_of_the_bow").getValue());
                     binding.astraWarning.setVisibility(View.GONE);
 
                 }
