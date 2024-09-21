@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,6 +16,19 @@
         app:itemIconPadding="30dp"
         app:menu="@menu/drawer_items"
         app:headerLayout="@layout/drawer_header"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start">
+
+        <!-- Center-aligned TextView -->
+        <TextView
+            android:id="@+id/navTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Copyright © 2024 Shaastra Samvad. All rights reserved"
+            android:padding="16dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="bottom"
+            android:textColor="@android:color/white" />
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
