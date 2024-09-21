@@ -20,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
 
         VideoView astraVideo = findViewById(R.id.videoView);
 
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.splash;
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.splash2;
 
         Uri uri = Uri.parse(videoPath.toString());
 
