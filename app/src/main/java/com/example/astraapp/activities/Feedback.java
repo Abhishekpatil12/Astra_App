@@ -63,7 +63,7 @@ public class Feedback extends AppCompatActivity {
 
         Date currentDate = new Date();
         Map<String, String> data = new HashMap<>();
-        data.put("gmail", String.valueOf(binding.gmail.getText()));
+        data.put("email", String.valueOf(binding.gmail.getText()));
         data.put("message", String.valueOf(binding.feedbackEditText.getText()));
         data.put("date", String.valueOf(currentDate));
 

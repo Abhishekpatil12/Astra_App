@@ -6,6 +6,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,6 +96,18 @@ public class StartActivity extends AppCompatActivity {
 //                    Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
 //                    startActivity(intent);
                     Toast.makeText(StartActivity.this, "Donate Clicked", Toast.LENGTH_SHORT).show();
+                }
+
+                if(itemId==R.id.navinstagramSymbol){
+                    RedirectApp("https://www.instagram.com/shaastra.samvad/");
+                }
+
+                if(itemId==R.id.navfacebookSymbol){
+
+                }
+
+                if(itemId==R.id.navxSymbol){
+                    RedirectApp("https://x.com/ShaastraS52332");
                 }
 
                 return false;
@@ -191,6 +205,19 @@ public class StartActivity extends AppCompatActivity {
         } else {
             binding.progressBar.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void RedirectApp(String link){
+
+        try {
+            Uri uri = Uri.parse(link);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
 }
