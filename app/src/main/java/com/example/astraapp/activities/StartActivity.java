@@ -93,8 +93,8 @@ public class StartActivity extends AppCompatActivity {
                 }
 
                 if(itemId==R.id.navDonate){
-//                    Intent intent = new Intent(StartActivity.this, MissionAndVision.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(StartActivity.this, Donate.class);
+                    startActivity(intent);
                     Toast.makeText(StartActivity.this, "Donate Clicked", Toast.LENGTH_SHORT).show();
                 }
 
