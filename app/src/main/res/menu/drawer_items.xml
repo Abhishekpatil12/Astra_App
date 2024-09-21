@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-
     <item
         android:id="@+id/navHome"
         android:title="Home"
@@ -26,6 +24,23 @@
         android:id="@+id/navDonate"
         android:title="Donate"
         android:icon="@drawable/ic_money"/>
+
+    <item
+        android:id="@+id/facebookSymbol"
+        android:title="Follow us on facebook"
+        android:icon="@drawable/icons8_facebook"/>
+
+    <item
+        android:id="@+id/instagramSymbol"
+        android:title="Follow us on Instagram"
+        android:icon="@drawable/icons8_instagram"/>
+
+    <item
+        android:id="@+id/xSymbol"
+        android:title="Follow us on X"
+        android:icon="@drawable/icons8_twitterx"/>
+
+
 
 
 </menu>

@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_marginTop="50px"
+            android:layout_marginTop="80px"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
@@ -34,37 +34,6 @@
             android:textColor="@color/primary_darker"
             android:textSize="25sp"
             android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10px"
-            android:layout_marginBottom="20px"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/insta_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icons8_instagram_48"
-                />
-
-            <ImageView
-                android:id="@+id/facebook_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icons8_facebook_48"
-                />
-
-            <ImageView
-                android:id="@+id/x_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icons8_x_48"
-                />
-
-        </LinearLayout>
 
     </LinearLayout>
 
