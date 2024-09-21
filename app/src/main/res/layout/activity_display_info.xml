@@ -9,6 +9,7 @@
     android:background="@drawable/om5"
     tools:context=".activities.DisplayInfo">
 
+
     <include
         layout="@layout/custom_toolbar"
         android:layout_width="match_parent"

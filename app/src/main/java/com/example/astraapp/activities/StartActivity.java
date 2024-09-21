@@ -125,6 +125,14 @@ public class StartActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StartActivity.this,Donate.class);
+                startActivity(intent);
+            }
+        });
+
         buttonDrawerToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
