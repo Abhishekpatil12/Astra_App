@@ -100,8 +100,10 @@
                     <EditText
                         android:id="@+id/gmail"
                         android:layout_width="match_parent"
+                        android:textColor="#DE701C"
                         android:layout_margin="30px"
-                        android:contentDescription="YOUR EMAIL"
+                        android:hint="Enter your mail"
+                        android:textColorHint="#DE701C"
                         android:layout_height="wrap_content"/>
 
                     <EditText
@@ -110,9 +112,11 @@
                         android:layout_height="200dp"
                         android:background="@drawable/feedback_background"
                         android:hint="Enter your feedback here..."
+                        android:textColorHint="#DE701C"
                         android:padding="16dp"
                         android:gravity="top"
                         android:inputType="textMultiLine"
+                        android:textColor="#DE701C"
                         android:minLines="5"
                         android:maxLines="10"
                         android:layout_margin="20dp"
