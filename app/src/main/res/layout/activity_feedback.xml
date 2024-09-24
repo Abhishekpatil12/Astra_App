@@ -98,12 +98,13 @@
 
 
                     <EditText
-                        android:id="@+id/gmail"
+                        android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:textColor="#DE701C"
                         android:layout_margin="30px"
                         android:hint="Enter your mail"
                         android:textColorHint="#DE701C"
+                        android:inputType="textEmailAddress"
                         android:layout_height="wrap_content"/>
 
                     <EditText

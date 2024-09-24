@@ -102,10 +102,6 @@ public class StartActivity extends AppCompatActivity {
                     RedirectApp("https://www.instagram.com/shaastra.samvad/");
                 }
 
-                if(itemId==R.id.navfacebookSymbol){
-
-                }
-
                 if(itemId==R.id.navxSymbol){
                     RedirectApp("https://x.com/ShaastraS52332");
                 }

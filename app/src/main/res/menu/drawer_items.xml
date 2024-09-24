@@ -26,11 +26,6 @@
         android:icon="@drawable/ic_money"/>
 
     <item
-        android:id="@+id/navfacebookSymbol"
-        android:title="Follow us on facebook"
-        android:icon="@drawable/icons8_facebook"/>
-
-    <item
         android:id="@+id/navinstagramSymbol"
         android:title="Follow us on Instagram"
         android:icon="@drawable/icons8_instagram"/>

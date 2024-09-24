@@ -3,6 +3,7 @@ package com.example.astraapp.activities;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,21 @@ public class Feedback extends AppCompatActivity {
 
     }
 
+    private boolean validateInputs() {
+
+        if (TextUtils.isEmpty(binding.email.getText())) {
+            binding.email.setError("Email cannot be empty");
+            return true;
+        }
+
+        if (TextUtils.isEmpty(binding.feedbackEditText.getText())) {
+            binding.feedbackEditText.setError("Feedback cannot be empty");
+            return true;
+        }
+
+        return false;
+    }
+
     private void onclickfunc() {
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +69,11 @@ public class Feedback extends AppCompatActivity {
         binding.submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                savedata();
+
+                if(!validateInputs()){
+                    savedata();
+                }
+
             }
         });
 
@@ -63,7 +83,9 @@ public class Feedback extends AppCompatActivity {
 
         Date currentDate = new Date();
         Map<String, String> data = new HashMap<>();
-        data.put("email", String.valueOf(binding.gmail.getText()));
+
+        validateInputs();
+        data.put("email", String.valueOf(binding.email.getText()));
         data.put("message", String.valueOf(binding.feedbackEditText.getText()));
         data.put("date", String.valueOf(currentDate));
 
